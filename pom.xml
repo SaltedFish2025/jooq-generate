@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.jooq</groupId>
+    <artifactId>jooq-generator</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>jooq-generator</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <junit.version>5.9.2</junit.version>
+        <jooq-version>3.19.7</jooq-version>
+    </properties>
+
+    <dependencies>
+        <!--这是 jOOQ 的核心库-->
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <version>${jooq-version}</version>
+        </dependency>
+
+        <!--数据库依赖-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.3.3</version>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+                <version>3.19.7</version>
+                <!--下面这段不注释时，可以通过 mvn clean install 来生成代码-->
+                <executions>
+                    <execution>
+                        <id>convergence</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <dependencies>
+                    <!--数据库依赖-->
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>42.3.3</version>
+                    </dependency>
+                </dependencies>
+
+                <configuration>
+                    <jdbc>
+                        <!-- 数据库相关配置 -->
+                        <driver>org.postgresql.Driver</driver>
+                        <url>jdbc:postgresql://localhost:5432/service</url>
+                        <user>postgres</user>
+                        <password>123456</password>
+                    </jdbc>
+
+                    <generator>
+                        <name>org.jooq.codegen.JavaGenerator</name>
+
+                        <database>
+                            <!-- 数据库的基本信息 -->
+                            <name>org.jooq.meta.postgres.PostgresDatabase</name>
+                            <inputSchema>public</inputSchema><!--模式-->
+                            <!-- includes 选项需要生成的表 .* = 全部]-->
+                            <includes>.*</includes>
+                            <!-- excludes选项不生成的表 -->
+                            <excludes></excludes>
+                        </database>
+
+                        <generate>
+                            <pojos>true</pojos>
+                        </generate>
+
+                        <target>
+                            <!-- 自动生成的类的包名，以及路径 -->
+                            <packageName>jooq.database.postgres</packageName>
+                            <directory>src/main/java</directory>
+                        </target>
+
+                        <strategy>
+                            <matchers>
+                                <tables>
+                                    <table>
+                                        <expression>^(.*)$</expression>
+                                        <tableClass>
+                                            <!-- table的后缀为TB -->
+                                            <transform>PASCAL</transform>
+                                            <expression>$1_T_B</expression>
+                                        </tableClass>
+                                        <recordClass>
+                                            <!-- record的后缀为PO，表示实体类 -->
+                                            <transform>PASCAL</transform>
+                                            <expression>$1_P_O</expression>
+                                        </recordClass>
+                                        <pojoClass>
+                                            <!-- pojo后缀为BO，作为内部使用的简单对象-->
+                                            <transform>PASCAL</transform>
+                                            <expression>$1_B_O</expression>
+                                        </pojoClass>
+                                    </table>
+                                </tables>
+                            </matchers>
+                        </strategy>
+                    </generator>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
