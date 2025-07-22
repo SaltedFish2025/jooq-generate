@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jooq</groupId>
-    <artifactId>jooq-generator</artifactId>
+    <artifactId>jooq-generate</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>jooq-generator</name>
+    <name>jooq-generate</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -69,10 +69,8 @@
                         <user>postgres</user>
                         <password>123456</password>
                     </jdbc>
-
                     <generator>
                         <name>org.jooq.codegen.JavaGenerator</name>
-
                         <database>
                             <!-- 数据库的基本信息 -->
                             <name>org.jooq.meta.postgres.PostgresDatabase</name>
@@ -82,17 +80,14 @@
                             <!-- excludes选项不生成的表 -->
                             <excludes></excludes>
                         </database>
-
                         <generate>
                             <pojos>true</pojos>
                         </generate>
-
                         <target>
                             <!-- 自动生成的类的包名，以及路径 -->
                             <packageName>jooq.database.postgres</packageName>
                             <directory>src/main/java</directory>
                         </target>
-
                         <strategy>
                             <matchers>
                                 <tables>

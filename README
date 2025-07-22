@@ -1,1 +1,7 @@
 本项目是使用jooq生成数据对应Java对象的工具
+
+使用方式:
+    根据需要,修改pom.xml配置文件后,
+    使用idea的Maven侧边栏(项目->插件->jooq-codegen->jooq-codegen:generate)启动,
+    即可生成对应的Java对象
+    (程序运行完毕后可能需要重新从磁盘加载一下项目才能在idea看到生成的对象)
