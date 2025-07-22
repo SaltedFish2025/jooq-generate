@@ -1,13 +1,9 @@
-import jooq.database.postgres.tables.pojos.漫画BO;
-import jooq.database.postgres.tables.漫画TB;
-import org.jooq.DSLContext;
-import org.jooq.SQLDialect;
-import org.jooq.impl.DSL;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {

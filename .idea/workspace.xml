@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f99252c4-647a-4962-82cf-bfde48948167" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/README" afterDir="false" />
+    <list default="true" id="f99252c4-647a-4962-82cf-bfde48948167" name="更改" comment="第一次提交">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,11 +85,24 @@
       <workItem from="1753159682039" duration="15000" />
       <workItem from="1753159704286" duration="36000" />
       <workItem from="1753159748145" duration="61000" />
-      <workItem from="1753159815841" duration="159000" />
+      <workItem from="1753159815841" duration="322000" />
     </task>
+    <task id="LOCAL-00001" summary="第一次提交">
+      <option name="closed" value="true" />
+      <created>1753160106108</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1753160106108</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="第一次提交" />
+    <option name="LAST_COMMIT_MESSAGE" value="第一次提交" />
   </component>
 </project>
